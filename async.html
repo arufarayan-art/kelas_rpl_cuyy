@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="id">
+<head><meta charset="utf-8"><title>Latihan async</title></head>
+<body>
+<button id="muat" type="button">Ambil waktu server</button>
+<p id="hasil" aria-live="polite"></p>
+
+<script>
+const tombol = document.querySelector('#muat');
+const hasil = document.querySelector('#hasil');
+
+tombol.addEventListener('click', async () => {
+    tombol.disabled = true;
+    hasil.textContent = 'Memuat…';
+
+    try {
+        const respons = await fetch('api_waktu.php', { cache: 'no-store' });
+
+        if (!respons.ok) throw new Error(`HTTP ${respons.status}`);
+
+        const data = await respons.json();
+        hasil.textContent = data.waktu;
+    } catch (error) {
+        hasil.textContent = 'Waktu server tidak dapat dimuat.';
+        console.error(error);
+    } finally {
+        tombol.disabled = false;
+    }
+});
+</script>
+</body>
+</html>

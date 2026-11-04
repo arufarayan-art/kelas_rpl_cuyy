@@ -9,9 +9,7 @@ final class NilaiAkademik
     public function __construct(float $angka)
     {
         if (!is_finite($angka) || $angka < 0 || $angka > 100) {
-            throw new InvalidArgumentException(
-                'Nilai di luar rentang.'
-            );
+            throw new InvalidArgumentException('Nilai di luar rentang.');
         }
 
         $this->angka = $angka;
@@ -31,5 +29,4 @@ final class NilaiAkademik
 $nilai = new NilaiAkademik(82.5);
 
 echo $nilai->angka() . PHP_EOL;
-
 echo $nilai->lulus() ? 'Lulus' : 'Belum lulus';

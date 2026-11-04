@@ -14,5 +14,4 @@ function rataRata(float ...$angka): ?float
 $data = [80.0, 90.0, 100.0];
 
 echo rataRata(...$data) . PHP_EOL;
-
 var_dump(rataRata());

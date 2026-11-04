@@ -5,9 +5,7 @@ declare(strict_types=1);
 function bagi(float $a, float $b): float
 {
     if ($b === 0.0) {
-        throw new InvalidArgumentException(
-            'Pembagi tidak boleh nol.'
-        );
+        throw new InvalidArgumentException('Pembagi tidak boleh nol.');
     }
 
     return $a / $b;

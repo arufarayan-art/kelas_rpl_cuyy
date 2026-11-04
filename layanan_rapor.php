@@ -35,19 +35,12 @@ final class RaporService
     {
         $nilai = $this->sumber->untukSiswa($idSiswa);
 
-        return $nilai === []
-            ? null
-            : array_sum($nilai) / count($nilai);
+        return $nilai === [] ? null : array_sum($nilai) / count($nilai);
     }
 }
 
-$sumber = new SumberNilaiArray([
-    1 => [80.0, 90.0],
-    2 => []
-]);
-
+$sumber = new SumberNilaiArray([1 => [80.0, 90.0], 2 => []]);
 $layanan = new RaporService($sumber);
 
 echo $layanan->rataRata(1) . PHP_EOL;
-
 var_dump($layanan->rataRata(2));
